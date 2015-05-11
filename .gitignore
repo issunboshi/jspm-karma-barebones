@@ -1,0 +1,28 @@
+# Vendor (e.g. Composer)
+vendor/*
+!vendor/.gitkeep
+
+# Node Package Manager
+node_modules
+
+# JSPM
+jspm_packages
+
+# Vagrant
+bin
+.vagrant
+
+# Sass
+.sass-cache/
+
+# Bower
+bower_components/
+
+# Miscellaneous
+*.esproj
+*.DS_Store
+.Thumbs.db
+npm-debug.log
+*.db
+desktop.ini
+.env
