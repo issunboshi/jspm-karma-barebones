@@ -1,4 +1,4 @@
-function addClass (el, className) {
+function addClass(el, className) {
     if (el.classList) {
         el.classList.add(className);
     } else {

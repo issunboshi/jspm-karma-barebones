@@ -1,9 +1,12 @@
-import {destroyJS} from 'modules/bootstrap';
+import {removeClass} from 'helpers/removeClass';
 
-describe("Bootstrap", function() {
-    describe("destroyJS", function () {
-        it("should remove the .js class from the html element and return that the class is not present", function() {
-            expect(destroyJS()).toBe(false);
-        });
-    })
+describe("removeClass", function () {
+    var htmlEl = document.querySelectorAll('html')[0];
+
+    it("should remove a class from the html element and return that the class is not present", function () {
+
+        expect(removeClass(htmlEl, 'js')).not.toBeTruthy();
+
+    });
+
 });
