@@ -4462,28 +4462,147 @@ System.register("npm:lodash@3.8.0", ["npm:lodash@3.8.0/index"], true, function(r
   return module.exports;
 });
 
-System.register("app", ["npm:lodash@3.8.0"], function($__export) {
+System.register("helpers/addClass", [], function($__export) {
   "use strict";
-  var __moduleName = "app";
+  var __moduleName = "helpers/addClass";
+  function addClass(el, className) {
+    if (el.classList) {
+      el.classList.add(className);
+    } else {
+      el.className += ' ' + className;
+    }
+    return el.classList.contains(className);
+  }
+  return {
+    setters: [],
+    execute: function() {
+      $__export("addClass", addClass);
+    }
+  };
+});
+
+System.register("helpers/removeClass", [], function($__export) {
+  "use strict";
+  var __moduleName = "helpers/removeClass";
+  function removeClass(el, className) {
+    if (el.classList) {
+      el.classList.remove(className);
+    } else {
+      el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+    }
+    return el.classList.contains(className);
+  }
+  return {
+    setters: [],
+    execute: function() {
+      $__export("removeClass", removeClass);
+    }
+  };
+});
+
+System.register("helpers/toggleClass", [], function($__export) {
+  "use strict";
+  var __moduleName = "helpers/toggleClass";
+  function toggleClass(el, className) {
+    if (el.classList) {
+      el.classList.toggle(className);
+    } else {
+      var classes = el.className.split(' '),
+          existingIndex = classes.indexOf(className);
+      if (existingIndex >= 0) {
+        classes.splice(existingIndex, 1);
+      } else {
+        classes.push(className);
+      }
+      el.className = classes.join(' ');
+    }
+    return el.classList.contains(className);
+  }
+  return {
+    setters: [],
+    execute: function() {
+      $__export("toggleClass", toggleClass);
+    }
+  };
+});
+
+System.register("modules/getRSSFeed", [], function($__export) {
+  "use strict";
+  var __moduleName = "modules/getRSSFeed";
+  function getRSSFeed(feedUrl) {
+    var request = new XMLHttpRequest();
+    request.open('GET', '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&q=' + encodeURIComponent(feedUrl), true);
+    request.onload = (function() {
+      console.log("It's alive!");
+      if (request.status >= 200 && request.status < 400) {
+        return resp = request.responseText;
+      } else {
+        return false;
+      }
+    });
+    request.onerror = (function() {
+      console.log("It's alive!");
+      return 'connection error';
+    });
+    return request.send();
+  }
+  return {
+    setters: [],
+    execute: function() {
+      $__export("getRSSFeed", getRSSFeed);
+    }
+  };
+});
+
+System.register("modules/bootstrap", ["helpers/addClass", "helpers/removeClass", "helpers/toggleClass"], function($__export) {
+  "use strict";
+  var __moduleName = "modules/bootstrap";
+  var addClass,
+      removeClass,
+      toggleClass;
+  function initiateJS() {
+    var htmlEl = document.querySelectorAll('html')[0];
+    return addClass(htmlEl, 'js');
+  }
+  function destroyJS() {
+    var htmlEl = document.querySelectorAll('html')[0];
+    return removeClass(htmlEl, 'js');
+  }
+  function toggleJS() {
+    var htmlEl = document.querySelectorAll('html')[0];
+    return toggleClass(htmlEl, 'js');
+  }
+  return {
+    setters: [function($__m) {
+      addClass = $__m.addClass;
+    }, function($__m) {
+      removeClass = $__m.removeClass;
+    }, function($__m) {
+      toggleClass = $__m.toggleClass;
+    }],
+    execute: function() {
+      $__export("initiateJS", initiateJS), $__export("destroyJS", destroyJS), $__export("toggleJS", toggleJS);
+    }
+  };
+});
+
+System.register("app/app", ["npm:lodash@3.8.0", "modules/bootstrap", "modules/getRSSFeed"], function($__export) {
+  "use strict";
+  var __moduleName = "app/app";
   var _,
-      ASampleClass,
-      aClass;
+      initiateJS,
+      getRSSFeed;
   return {
     setters: [function($__m) {
       _ = $__m.default;
+    }, function($__m) {
+      initiateJS = $__m.initiateJS;
+    }, function($__m) {
+      getRSSFeed = $__m.getRSSFeed;
     }],
     execute: function() {
-      console.log(_.VERSION);
-      ASampleClass = (function() {
-        function ASampleClass(something) {
-          this.something = something;
-        }
-        return ($traceurRuntime.createClass)(ASampleClass, {aMethod: function() {
-            console.log(this.something);
-          }}, {});
-      }());
-      aClass = new ASampleClass({'aThing': 'Something'});
-      aClass.aMethod();
+      getRSSFeed('http://pipes.yqlblog.net/rss');
+      initiateJS();
     }
   };
 });
