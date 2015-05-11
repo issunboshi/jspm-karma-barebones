@@ -7,7 +7,7 @@ class RssReader {
     }
 
     setUpFeeds () {
-        return google.load("feeds", "1");
+        return true;
     }
 
     getFeed() {
