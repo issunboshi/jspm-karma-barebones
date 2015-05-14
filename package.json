@@ -3,7 +3,8 @@
     "directories": {},
     "dependencies": {
       "jquery": "npm:jquery@^2.1.4",
-      "lodash": "npm:lodash@^3.8.0"
+      "lodash": "npm:lodash@^3.8.0",
+      "velesin/jasmine-jquery": "github:velesin/jasmine-jquery@^2.1.0"
     },
     "devDependencies": {
       "traceur": "github:jmcriffey/bower-traceur@0.0.88",
@@ -17,8 +18,12 @@
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.1.8",
     "karma-firefox-launcher": "^0.1.4",
+    "karma-fixture": "^0.2.3",
     "karma-growl-reporter": "^0.1.1",
+    "karma-ie-launcher": "^0.1.5",
     "karma-jasmine": "^0.3.5",
+    "karma-jasmine-ajax": "^0.1.12",
+    "karma-jasmine-jquery": "^0.1.1",
     "karma-jspm": "^1.1.5",
     "karma-mocha": "^0.1.10",
     "mocha": "^2.2.4"

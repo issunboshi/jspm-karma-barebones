@@ -10,17 +10,16 @@ module.exports = function (config) {
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['jspm', 'jasmine'],
-
+        frameworks: ['jspm', 'jasmine-jquery', 'jasmine-ajax', 'jasmine'],
 
         jspm: {
             loadFiles: [
+                'vendor/*.js',
                 'app/*.js',
                 'dist/*.js',
                 'helpers/*.js',
                 'modules/*.js',
-                'vendor/*.js',
-                'test/**/*.js'
+                'test/unit/**/*.js'
             ]
         },
 
@@ -28,12 +27,6 @@ module.exports = function (config) {
         // list of files to exclude
         exclude: [
         ],
-
-
-        // preprocess matching files before serving them to the browser
-        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-        preprocessors: {
-        },
 
 
         // test results reporter to use
