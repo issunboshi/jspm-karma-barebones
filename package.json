@@ -2,6 +2,7 @@
   "jspm": {
     "directories": {},
     "dependencies": {
+      "fastdom": "github:wilsonpage/fastdom@^0.8.6",
       "fetch": "github:github/fetch@^0.8.1",
       "jquery": "npm:jquery@^2.1.4",
       "lodash": "npm:lodash@^3.8.0",

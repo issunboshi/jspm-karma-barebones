@@ -10,6 +10,7 @@ System.config({
 
 System.config({
   "map": {
+    "fastdom": "github:wilsonpage/fastdom@0.8.6",
     "fetch": "github:github/fetch@0.8.1",
     "lodash": "npm:lodash@3.8.0",
     "traceur": "github:jmcriffey/bower-traceur@0.0.88",
