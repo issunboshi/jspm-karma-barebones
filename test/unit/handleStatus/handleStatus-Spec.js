@@ -17,7 +17,12 @@ describe("handleStatus", () => {
 
     it("Should throw an error if the status is not greater than 200", () => {
 
-        expect(() => {handleStatus(badResponse)}).toThrowError('Not found');
+        expect(
+            () => {
+                handleStatus(badResponse)
+            }
+        )
+        .toThrowError('Not found');
 
     });
 

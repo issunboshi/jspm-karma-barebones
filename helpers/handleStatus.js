@@ -9,9 +9,12 @@ function handleStatus(response) {
 
         return response;
 
+    } else {
+
+        throw new Error(response.statusText);
+
     }
 
-    throw new Error(response.statusText);
 }
 
 export default handleStatus;

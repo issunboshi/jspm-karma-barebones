@@ -1,4 +1,5 @@
 System.config({
+  "baseURL": "./",
   "transpiler": "traceur",
   "paths": {
     "*": "*.js",
@@ -9,6 +10,7 @@ System.config({
 
 System.config({
   "map": {
+    "fetch": "github:github/fetch@0.8.1",
     "lodash": "npm:lodash@3.8.0",
     "traceur": "github:jmcriffey/bower-traceur@0.0.88",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88",

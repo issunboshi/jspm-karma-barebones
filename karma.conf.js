@@ -14,12 +14,15 @@ module.exports = function (config) {
 
         jspm: {
             loadFiles: [
-                'vendor/*.js',
-                'app/*.js',
                 'dist/*.js',
+                'vendor/*.js',
+                'node_modules/jasmine-es6-promise-matchers/node_modules/es6-promise/dist/es6-promise.js',//For easier matching of promises
+                'node_modules/jasmine-es6-promise-matchers/jasmine-es6-promise-matchers.js',//For easier matching of promises
+                'app/*.js',
                 'helpers/*.js',
                 'modules/*.js',
-                'test/unit/**/*.js'
+                'test/unit/**/*.js',
+                'test/integration/**/*.js'
             ]
         },
 
@@ -54,7 +57,7 @@ module.exports = function (config) {
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ['Chrome'],
+        browsers: ['Firefox'],
 
 
         // Continuous Integration mode

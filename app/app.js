@@ -1,4 +1,4 @@
 import {initiateJS} from 'modules/bootstrap';
-import {convertRSStoJSON} from 'modules/convertRSStoJSON';
+import getData from 'modules/getData';
 
-initiateJS();
+initiateJS

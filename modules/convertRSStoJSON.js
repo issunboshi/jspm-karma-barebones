@@ -25,7 +25,7 @@ function convertRSStoJSON(xml) {
 
 /**
  * Handle parsed XML and either return it as is or throw an error - XmlToJSON doesn't send obvious errors back, instead it sends XML stating there has been an error
- * @param  {String} A string representing the 
+ * @param  {String} A stringified representation of the converted XML
  * @return {[type]}
  */
 function handleParsedXML(convertedJSON) {
@@ -40,4 +40,4 @@ function handleParsedXML(convertedJSON) {
     }
 }
 
-export {convertRSStoJSON};
+export default convertRSStoJSON;
